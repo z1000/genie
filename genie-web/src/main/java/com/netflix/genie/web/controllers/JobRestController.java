@@ -700,7 +700,7 @@ public class JobRestController {
                         new ResponseExtractor<Void>() {
                             @Override
                             public Void extractData(final ClientHttpResponse forwardResponse) throws IOException {
-                                response.setStatus(HttpStatus.OK.value());
+                                response.setStatus(forwardResponse.getStatusCode().value());
                                 copyResponseHeaders(response, forwardResponse);
                                 // Documentation I could find pointed to the HttpEntity reading the bytes off
                                 // the stream so this should resolve memory problems if the file returned is large
